@@ -151,18 +151,36 @@
         padding: 20px;
       }
     }
-    .location p {
-  font-size: 22px; /* كبر الخط شوي */
-  margin: 10px 0 0;
-  color: red; /* خلي النص باللون الأحمر */
-}
+      .location {
+    text-align: center;
+    padding: 20px 10px;
+  }
 
-.location-icon {
-  font-size: 26px;
-  margin-left: 8px;
-  vertical-align: middle;
-  color: red; /* خلي الأيقونة كمان باللون الأحمر */
-}
+  .location p {
+    font-size: 20px;
+    margin: 10px 0 0;
+    color: red;
+    font-weight: bold;
+    line-height: 1.6;
+  }
+
+  .location-icon {
+    font-size: 22px;
+    margin-right: 6px;
+    vertical-align: middle;
+    color: red;
+  }
+
+  /* استجابة ممتازة للموبايل */
+  @media (max-width: 600px) {
+    .location p {
+      font-size: 18px;
+    }
+    .location-icon {
+      font-size: 20px;
+    }
+  }
+
     </style>
 </head>
 <body>
@@ -176,9 +194,13 @@
 
   <div class="container">
     <p><b>يقدم مخيم نسيم القدس أجواءً فريدة في قلب الطبيعة مع خيام مريحة، جلسات خارجية، مرافق حديثة، ومسابح للأطفال والكبار- تخيم للكشافة وتخيم للعائلات ورحلات مدرسية ، إضافة إلى مطبخ يقدم أطيب الأكلات العربية التقليدية والصاجيات حيث تم إفتتاحه في  عام 2025. </b></p>
-<h3 class="location">
-  <p><b><span class="location-icon">📍</span> موقع المخيم: #عمان # مرج الحمام # وادي الشتاء # البحاث-منتزه وإستراحه نسيم القدس</b></p>
-</h3>
+<div class="location">
+  <p>
+    <span class="location-icon">📍</span>
+    موقع المخيم: <span>#عمان #مرج_الحمام #وادي_الشتاء</span><br>
+    بالقرب من منتزه ومطعم نسيم القدس
+  </p>
+</div>
     <div class="section">
       <h2>مرافق المخيم</h2>
       <div class="images">
