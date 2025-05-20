@@ -36,7 +36,7 @@
       justify-content: space-between;
       width: 100%;
       max-width: 1000px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
     .header-content img {
       width: 120px;
@@ -44,15 +44,18 @@
       border-radius: 16px;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      flex-shrink: 0;
     }
     .header-content h1 {
       font-size: 32px;
       background-color: rgba(0, 0, 0, 0.4);
       padding: 20px 30px;
       border-radius: 15px;
-      margin: 10px 20px;
+      margin: 0 15px;
       flex: 1;
       text-align: center;
+      min-width: 0;
+      white-space: normal;
     }
     .container {
       max-width: 1100px;
@@ -79,46 +82,37 @@
     .section {
       margin-bottom: 40px;
     }
-    .images, .videos {
+    .images {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 15px;
       margin-top: 15px;
     }
-    .images img, .videos iframe {
+    .images img {
       width: 100%;
-      max-height: 160px;
+      height: 160px;
       object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
-   .videos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 15px;
-}
-
-.videos video {
-  width: 100%;
-  height: auto;
-  max-height: 220px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-  background: #000;
-}
-
-@media (max-width: 480px) {
-  .videos {
-    grid-template-columns: 1fr; /* خلي الفيديو يمتد على عرض الشاشة بالكامل */
-  }
-  .videos video {
-    max-height: none; /* خلي الطول حسب المحتوى */
-  }
-}
+    .images img:hover {
+      transform: scale(1.03);
+    }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .videos video {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: #000;
+    }
     .cta {
       text-align: center;
       margin-top: 40px;
@@ -133,105 +127,198 @@
       font-weight: bold;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
       transition: background-color 0.3s ease;
+      display: inline-block;
     }
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      .header-content h1 {
-        font-size: 22px;
-        padding: 15px 20px;
-      }
-      .images img, .videos iframe {
-        max-height: 120px;
-      }
-      .container {
-        margin: -40px 10px 30px;
-        padding: 20px;
-      }
+    .cta a:hover {
+      background-color: #1b5e20;
     }
-      .location {
-    text-align: center;
-    padding: 20px 10px;
-  }
-
-  .location p {
-    font-size: 20px;
-    margin: 10px 0 0;
-    color: red;
-    font-weight: bold;
-    line-height: 1.6;
-  }
-
-  .location-icon {
-    font-size: 22px;
-    margin-right: 6px;
-    vertical-align: middle;
-    color: red;
-  }
-
-  /* استجابة ممتازة للموبايل */
-  @media (max-width: 600px) {
+    .location {
+      text-align: center;
+      padding: 20px 10px;
+      margin: 20px 0;
+      background-color: rgba(46, 125, 50, 0.1);
+      border-radius: 10px;
+    }
     .location p {
-      font-size: 18px;
+      font-size: 20px;
+      margin: 10px 0 0;
+      color: #d32f2f;
+      font-weight: bold;
+      line-height: 1.6;
     }
     .location-icon {
-      font-size: 20px;
+      font-size: 22px;
+      margin-right: 6px;
+      vertical-align: middle;
+      color: #d32f2f;
     }
-  }
-
-    </style>
+    
+    /* تحسينات للجوال */
+    @media (max-width: 992px) {
+      .header-content h1 {
+        font-size: 26px;
+        padding: 15px 20px;
+      }
+      .header-content img {
+        width: 90px;
+        height: 90px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        height: 250px;
+      }
+      .header-content h1 {
+        font-size: 20px;
+        padding: 12px 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .header-content img {
+        width: 70px;
+        height: 70px;
+      }
+      .container {
+        margin: -40px 15px 30px;
+        padding: 20px;
+      }
+      .images {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      }
+      .images img {
+        height: 120px;
+      }
+      .videos {
+        grid-template-columns: 1fr;
+      }
+      .videos video {
+        height: 180px;
+      }
+      .location p {
+        font-size: 18px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .header {
+        height: 200px;
+        padding: 0 10px;
+      }
+      .header-content h1 {
+        font-size: 16px;
+        padding: 10px 12px;
+        margin: 0 8px;
+      }
+      .header-content img {
+        width: 50px;
+        height: 50px;
+      }
+      .images {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      .images img {
+        height: 100px;
+      }
+      .videos video {
+        height: 160px;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .header-content h1 {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="header">
     <div class="header-content">
-      <img src="assets/assets/imgs/37.jpg" alt="خيمة">
+      <img src="assets/imgs/37.jpg" alt="خيمة">
       <h1>مخيم نسيم القدس - تجربة طبيعية لا تُنسى</h1>
-      <img src="assets/assets/imgs/16.jpg" alt="نار">
+      <img src="assets/imgs/32.jpg" alt="نار">
     </div>
   </div>
 
   <div class="container">
     <p><b>يقدم مخيم نسيم القدس أجواءً فريدة في قلب الطبيعة مع خيام مريحة، جلسات خارجية، مرافق حديثة، ومسابح للأطفال والكبار- تخيم للكشافة وتخيم للعائلات ورحلات مدرسية ، إضافة إلى مطبخ يقدم أطيب الأكلات العربية التقليدية والصاجيات حيث تم إفتتاحه في  عام 2025. </b></p>
-<div class="location">
-  <p>
-    <span class="location-icon">📍</span>
-    موقع المخيم: <span>#عمان #مرج_الحمام #وادي_الشتاء</span><br>
-    بالقرب من منتزه ومطعم نسيم القدس
-  </p>
-</div>
+    
+    <div class="location">
+      <p>
+        <span class="location-icon">📍</span>
+        موقع المخيم: <span>#عمان #مرج_الحمام #وادي_الشتاء</span><br>
+        بالقرب من منتزه ومطعم نسيم القدس
+      </p>
+    </div>
+
     <div class="section">
       <h2>مرافق المخيم</h2>
       <div class="images">
-
         <!-- صور الخيام -->
-         <a href="assets/assets/imgs/0.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/0.jpg" alt="خيمة 55"></a>
-         <a href="assets/assets/imgs/1.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/1.jpg" alt="خيمة 1"></a>
-        <a href="assets/assets/imgs/2.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/2.jpg" alt="خيمة 2"></a>
-        <a href="assets/assets/imgs/3.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/3.jpg" alt="خيمة 3"></a>
-        <a href="assets/assets/imgs/4.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/4.jpg" alt="خيمة 4"></a>
-        <a href="assets/assets/imgs/5.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/5.jpg" alt="خيمة 5"></a>
-        <a href="assets/assets/imgs/6.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/6.jpg" alt="خيمة 6"></a>
-        <a href="assets/assets/imgs/43.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/43.jpeg" alt="خيمة 43"></a>
-        <a href="assets/assets/imgs/7.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/7.jpg" alt="خيمة 7"></a>
-        <a href="assets/assets/imgs/8.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/8.jpg" alt="خيمة 8"></a>
-       <a href="assets/assets/imgs/55.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/55.jpeg" alt="خيمة 55"></a>
-       <a href="assets/assets/imgs/54.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/54.jpeg" alt="خيمة 55"></a>
-        <a href="assets/assets/imgs/9.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/9.jpg" alt="خيمة 9"></a>
-        <a href="assets/assets/imgs/10.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/10.jpg" alt="خيمة 10"></a>            
-        <a href="assets/assets/imgs/11.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/11.jpg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/12.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/12.jpg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/58.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/58.jpg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/13.jpg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/13.jpg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/40.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/40.jpeg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/41.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/41.jpeg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/42.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/42.jpeg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/43.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/43.jpeg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/44.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/44.jpeg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/45.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/45.jpeg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/46.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/46.jpeg" alt="خيمة 10"></a>
-        <a href="assets/assets/imgs/47.jpeg" class="glightbox" data-gallery="tents"><img src="assets/assets/imgs/47.jpeg" alt="خيمة 10"> </a>
+        <a href="assets/imgs/0.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/0.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/1.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/1.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/2.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/2.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/3.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/3.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/4.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/4.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/5.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/5.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/6.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/6.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/7.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/7.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/8.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/8.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/9.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/9.jpeg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/10.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/10.jpeg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/9.1.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/9.1.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/10.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/10.jpeg" alt="خيمة">
+        </a><a href="assets/imgs/11.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/11.jpg" alt="خيمة">
+        </a><a href="assets/imgs/12 .1.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/12 .1.jpg" alt="خيمة">
+
+        </a><a href="assets/imgs/12.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/12.jpg" alt="خيمة">
+        </a>
+        <a href="assets/imgs/13.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/13.jpg" alt="خيمة">
+        </a><a href="assets/imgs/14.jpg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/14.jpg" alt="خيمة">
+        </a><a href="assets/imgs/15.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/15.jpeg" alt="خيمة">
+        </a><a href="assets/imgs/16.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/16.jpeg" alt="خيمة">
+        </a><a href="assets/imgs/17.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/17.jpeg" alt="خيمة">
+        </a><a href="assets/imgs/18.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/18.jpeg" alt="خيمة">
+        </a><a href="assets/imgs/19.jpeg" class="glightbox" data-gallery="tents">
+          <img src="assets/imgs/19.jpeg" alt="خيمة">
+        </a>
+
       </div>
     </div>
 
@@ -239,27 +326,46 @@
       <h2>المطبخ والأكلات</h2>
       <p><b>نقدم تشكيلة من الأكلات العربية الشهية المتنوعة، إلى جانب مجموعة من الصاجيات الطازجة التي تُحضّر أمامكم.</b></p>
       <div class="images">
-       <a href="assets/assets/imgs/18.jpg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/18.jpg" alt="مطبخ مجهز"></a>
-        <a href="assets/assets/imgs/19.jpg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/19.jpg" alt="أكلات عربية"></a>
-        <a href="assets/assets/imgs/20.jpg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/20.jpg" alt="صاجيات متنوعة"></a>
-        <a href="assets/assets/imgs/21.jpg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/21.jpg" alt="فطور شعبي"></a>
-        <a href="assets/assets/imgs/22.jpg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/22.jpg" alt="فطور شعبي"></a>
-        <a href="assets/assets/imgs/48.jpeg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/48.jpeg" alt="فطور شعبي"></a>
-        <a href="assets/assets/imgs/51.jpeg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/51.jpeg" alt="فطور شعبي"></a>
-        <a href="assets/assets/imgs/50.jpeg" class="glightbox" data-gallery="kitchen"><img src="assets/assets/imgs/50.jpeg" alt="فطور شعبي"></a>
+        <a href="assets/imgs/20.jpeg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/20.jpeg" alt="مطبخ">
+        </a>
+        <a href="assets/imgs/21.jpg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/21.jpg" alt="أكلات">
+        </a>
+        <a href="assets/imgs/22.jpg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/22.jpg" alt="صاجيات">
+        </a>
+        <a href="assets/imgs/24.jpg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/24.jpg" alt="فطور">
+        </a>
+        <a href="assets/imgs/25.jpeg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/25.jpeg" alt="فطور">
+        </a>
+        <a href="assets/imgs/26.jpg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/26.jpg" alt="فطور">
+        </a>
+        <a href="assets/imgs/27.jpeg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/27.jpeg" alt="فطور">
+        </a>
+        <a href="assets/imgs/28.jpg" class="glightbox" data-gallery="kitchen">
+          <img src="assets/imgs/28.jpg" alt="فطور">
+        </a>
+        
       </div>
     </div>
 
-<div class="section">
-  <h2>قصص من أرض المخيم</h2>
-  <p><b>شاهد أجمل اللحظات والقصص الحقيقية من أرض مخيم نسيم القدس.</b></p>
-  <div class="videos">
-    <video controls poster="assets/imgs/preview.jpg">
-      <source src="assets/assets/imgs/57.mp4" type="video/mp4">
-      متصفحك لا يدعم تشغيل الفيديو.
-    </video>
-  </div>
-</div>
+    <div class="section">
+      <h2>قصص من أرض المخيم</h2>
+      <p><b>شاهد أجمل اللحظات والقصص الحقيقية من أرض مخيم نسيم القدس.</b></p>
+      <div class="videos">
+        <video controls poster="assets/imgs/preview.jpg">
+          <source src="assets/imgs/57.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        
+      </div>
+    </div>
+
     <div class="cta">
       <a href="tel:00962795669065">📞 احجز الآن - 00962795669065</a>
     </div>
@@ -267,7 +373,14 @@
 
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>
-    const lightbox = GLightbox({ selector: '.glightbox' });
+    document.addEventListener('DOMContentLoaded', function() {
+      const lightbox = GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+      });
+    });
   </script>
 </body>
 </html>
