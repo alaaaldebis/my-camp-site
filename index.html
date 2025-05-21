@@ -180,7 +180,14 @@
       vertical-align: middle;
       color: var(--accent-color);
     }
-    
+    @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeIn 0.8s ease-out;
+}
     /* تحسينات للجوال */
     @media (max-width: 992px) {
       .header {
@@ -279,6 +286,37 @@
         font-size: 1rem;
       }
     }
+    .booking-form {
+  background: rgba(46, 125, 50, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.btn-submit {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
@@ -403,16 +441,24 @@
       </div>
     </div>
 
-    <div class="section">
-      <h2>قصص من أرض المخيم</h2>
-      <p><b>شاهد أجمل اللحظات والقصص الحقيقية من أرض مخيم نسيم القدس.</b></p>
-      <div class="videos">
-        <video controls poster="./assets/imgs/video/video1.jpg" preload="metadata">
-          <source src="./assets/imgs/video/57.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
+   <div class="section">
+  <h2>قصص من أرض المخيم</h2>
+  <p><b>شاهد أجمل اللحظات والقصص الحقيقية من أرض مخيم نسيم القدس.</b></p>
+  <div class="section">
+  <h2>قصص من أرض المخيم</h2>
+  <p><b>شاهد أجمل اللحظات والقصص الحقيقية من أرض مخيم نسيم القدس.</b></p>
+  <div class="videos">
+    <div class="ratio ratio-16x9">
+      <iframe 
+        src="https://www.youtube.com/embed/-j6R7PCzQk8" 
+        title="YouTube video player" 
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
     </div>
+  </div>
+</div>
 
     <div class="cta">
       <a href="tel:00962795669065">
