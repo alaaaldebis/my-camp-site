@@ -28,7 +28,7 @@
     }
     
     .header {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./images/cover/tent-banner.jpg');
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./assets/imgs/title/32.jpg');
       background-size: cover;
       background-position: center;
       height: 60vh;
@@ -45,21 +45,13 @@
     .header-content {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       width: 100%;
       max-width: 1200px;
-      flex-wrap: nowrap;
-      gap: 20px;
     }
     
     .header-content img {
-      width: clamp(80px, 15vw, 150px);
-      height: clamp(80px, 15vw, 150px);
-      border-radius: 16px;
-      object-fit: cover;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      flex-shrink: 0;
-      border: 2px solid rgba(255,255,255,0.2);
+      display: none; /* إخفاء الصورة تمامًا */
     }
     
     .header-content h1 {
@@ -68,10 +60,10 @@
       padding: 20px 30px;
       border-radius: 15px;
       margin: 0;
-      flex: 1;
       text-align: center;
       line-height: 1.4;
       backdrop-filter: blur(5px);
+      max-width: 90%;
     }
     
     .container {
@@ -221,14 +213,10 @@
         min-height: 300px;
       }
       
-      .header-content {
-        flex-direction: row;
-        flex-wrap: nowrap;
-      }
-      
-      .header-content img {
-        width: clamp(60px, 12vw, 100px);
-        height: clamp(60px, 12vw, 100px);
+      .header-content h1 {
+        font-size: 1.5rem;
+        padding: 15px 20px;
+        max-width: 95%;
       }
       
       .container {
@@ -263,25 +251,17 @@
       }
     }
     
-    @media (max-width: 768px) {
-  .header-content {
-    flex-direction: row; /* يبقى أفقيًا */
-    flex-wrap: nowrap;
-    gap: 10px;
-  }
-  
-  .header-content img {
-    width: 60px !important;
-    height: 60px !important;
-  }
-  
-  .header-content h1 {
-    font-size: 1.2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
+    @media (max-width: 576px) {
+      .header {
+        height: 40vh;
+        min-height: 250px;
+      }
+      
+      .header-content h1 {
+        font-size: 1.3rem;
+        padding: 12px 15px;
+      }
+      
       .images {
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 10px;
@@ -298,15 +278,13 @@
       .location p {
         font-size: 1rem;
       }
-    
+    }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-content">
-      <img src="./assets/imgs/title/37.jpg" alt="خيمة" loading="lazy" onerror="this.src='./assets/imgs/placeholder.jpg'">
       <h1>مخيم نسيم القدس - تجربة طبيعية لا تُنسى</h1>
-      <img src="./assets/imgs/title/32.jpg" alt="نار" loading="lazy" onerror="this.src='./assets/imgs/placeholder.jpg'">
     </div>
   </div>
 
